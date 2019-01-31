@@ -1,3 +1,8 @@
+// Raunak Chowdhury
+// SoftDev2 pd8
+// K00 -- I See a Red Door...
+// 2019-01-30
+
 var canvas = document.getElementById("slate");
 var clear = document.getElementById("clear");
 var toggle = document.getElementById("toggle");
