@@ -1,7 +1,7 @@
 // Raunak Chowdhury
 // SoftDev2 pd8
-// K00 -- I See a Red Door...
-// 2019-01-30
+// K01 -- ...and I want to Paint It Better
+// 2019-01-31
 
 var canvas = document.getElementById("slate");
 var clear = document.getElementById("clear");
@@ -50,7 +50,7 @@ canvas.addEventListener('click', add_shape);
 /*
  * Explanations:
  * ctx.beginPath(): resets a "pen" used to draw shapes
- * e.preventDefault(): after further testing, no changes were observed. I'm unsure what it does as of yet.
+ * e.preventDefault(): prevents the function from executing
  * e.offsetX: x-coordinate of mouse pointer when an event is triggered
  * e.offsetY: y-coordinate of mouse pointer when an event is triggered
  */
