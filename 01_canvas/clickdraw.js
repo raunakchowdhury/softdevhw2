@@ -11,7 +11,7 @@ var toggle = document.getElementById("toggle");
 var ctx = canvas.getContext("2d");
 
 // state var that determines if box (0) or if circle (1)
-var state = 0;
+var state = false;
 
 var clear_canvas = function(e){
   ctx.clearRect(0,0,600,600);
@@ -19,28 +19,30 @@ var clear_canvas = function(e){
 
 var add_shape = function(e){
   e.preventDefault();
-  if (state == 0){
-    ctx.fillStyle = "#00FF00";
-    ctx.fillRect(e.offsetX,e.offsetY,50,50);
+  if (state){
+    fill_rectangle(e.offsetX, e.offsetY);
   }
   else{
-    console.log("filling ellipse");
-    ctx.fillStyle = "#FF0000";
-    // need this to prevent fill() from causing wonky shapes to appear on the screen
-    ctx.beginPath();
-    ctx.ellipse(e.offsetX,e.offsetY,50, 50, 0, 0, 2 * Math.PI);
-    // ellipse is invisible until you fill it!
-    ctx.fill();
+    fill_ellipse(e.offsetX, e.offsetY);
   }
 }
 
+var fill_rectangle = (x,y) => {
+  ctx.fillStyle = "#00FF00";
+  ctx.fillRect(x,y,50,50);
+}
+
+var fill_ellipse = (x,y) => {
+  ctx.fillStyle = "#FF0000";
+  // need this to prevent fill() from causing wonky shapes to appear on the screen
+  ctx.beginPath();
+  ctx.ellipse(x,y,50, 50, 0, 0, 2 * Math.PI);
+  // ellipse is invisible until you fill it!
+  ctx.fill();
+}
+
 var change_toggle = function(e){
-  if (state == 0){
-    state = 1;
-  }
-  else{
-    state = 0;
-  }
+  state = !state;
 }
 
 clear.addEventListener('click', clear_canvas);
