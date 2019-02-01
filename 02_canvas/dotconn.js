@@ -16,17 +16,20 @@ var clear_canvas = function(e){
 
 var add_ellipse = function(e){
   fill_ellipse(e.offsetX, e.offsetY);
+  fill_line(e.offsetX, e.offsetY);
 }
 
 var fill_ellipse = (x,y) => {
   ctx.fillStyle = "#FF0000";
   ctx.ellipse(x,y,2, 2, 0, 0, 2 * Math.PI);
+  ctx.fill();
+}
+
+var fill_line = (x,y) => {
+  // move to that pos and draw the line
+  ctx.moveTo(x,y);
   // fill in and outside of path
   ctx.stroke();
-  // move to that pos
-  ctx.moveTo(x,y);
-  // fill both
-  ctx.fill();
 }
 
 clear.addEventListener('click', clear_canvas);
