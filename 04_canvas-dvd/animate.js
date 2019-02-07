@@ -79,10 +79,10 @@ var dvdLogoSetup = function(){
   var dvdLogo = function(){
     window.cancelAnimationFrame( requestID );
 
-    if (rectX >= c.width - rectWidth){
+    if (rectX >= c.width - rectWidth || rectX <= 0){
       xVel *= -1;
     }
-    if (rectY >= c.height - rectHeight){
+    if (rectY >= c.height - rectHeight || rectY <= 0){
       yVel *= -1;
     }
     rectX += xVel;
