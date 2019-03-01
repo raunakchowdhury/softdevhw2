@@ -31,3 +31,16 @@ $ ionic serve
 - Write in TypeScript -- transpiles into the current JS so that the browser can run it smoothly
 - Can generate multiple templates
 - Iconic vs ionic / what is urg / where's the repo avialable
+
+## LaTeX -- 2019-03-01
+- Uses markup tags to define general structure, stylize, text, and citations
+- Implements macros to make writing easier
+- Can get it at [miktex.org](miktex.org)
+``` latex
+\documentclass[12pt,letterpaper]
+\begin{document}
+    \title{uwu}
+    \maketitle
+    \section{owo}
+\end{document}
+```
