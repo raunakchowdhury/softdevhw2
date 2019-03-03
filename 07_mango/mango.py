@@ -1,81 +1,104 @@
-# Raunak Chowdhury
+# headphones_cause_vaccines -- Peter Cwalina and Raunak Chowdhury
 # Softdev2 pd8
-# K#06: Yummy Mango Py
-#2019-02-28
+# K#07: Import/Export Bank
+#2019-03-01
+
+'''
+Dataset: PokemonGO Pokedex
+Contents:
+    - id: pokedex id, as an octal number
+    - num: same as pokedex id, but as a string
+    - name: name of the pokemon
+    - img: Link to the sprite image
+    - type: a list of types of the pokemon
+    - height: height
+    - weight: weight
+    - candy: the candy of the pokemon
+    - candy_count: # candies needed
+    - egg: distance needed to be walked for egg to hatch
+    - spawn_chance: How often it spawns
+    - spawn_time: the time at which it spawns
+    - weaknesses: list of weaknesses the pokemon has
+    - next_evolution: further evolutions of that pokemon
+Link to Dataset: https://raw.githubusercontent.com/Biuni/PokemonGO-Pokedex/master/pokedex.json
+To import:
+    1. Edit the dataset by eliminating the "pokemon:" field from the database as well as the first and last curly braces.
+        Note: If either stays, mongoDB will recognize and import the json as a single document; this results the entire db returning for every call that you make.
+    2. Enclose the json with []. This is needed for the next step.
+    3. Include the --jsonArray flag when mongoimporting. As the json file is already arranged in an array-like format and all you did was switch the first pair of {} to [], mongo will recognize this as an array and import the documents correctly.
+'''
 
 import pymongo
 
 SERVER_ADDR="157.230.0.112"
 connection =pymongo.MongoClient(SERVER_ADDR)
 db = connection.headphones_cause_vaccines
-collection = db.pokedex
+collection = db.pokemon
 
-def boro_find(borough):
+def find_pokemon_by_num(num):
     '''
-    finds restaurants by borough and returns them in a list.
+    finds pokemon by num.
     '''
-    restuarants = collection.find({'borough':borough})
-    return [restuarant for restuarant in restuarants]
+    pokemon = collection.find({'num':num})
+    return [poke for poke in pokemon]
 
-def zip_find(zip):
+def find_pokemon_by_steps(steps):
     '''
-    finds restaurants by zip and returns them in a list.
+    finds pokemon by the # of steps needed to hatch their egg.
+    parameter should be given as <float> km.
     '''
-    zip = str(zip)
-    restuarants = collection.find({'address.zipcode':zip})
-    return [restuarant for restuarant in restuarants]
+    pokemon = collection.find({'egg':steps})
+    return [poke for poke in pokemon]
 
-def zip_grade_find(zip, grade):
+def type_find(first_type, second_type):
     '''
-    finds restaurants by zip and grade and returns them in a list.
+    finds pokemon by types and returns them in a list.
     '''
-    zip = str(zip)
-    restuarants = collection.find(
+    pokemon = collection.find(
         {'$and':[
-            {'address.zipcode':zip},
-            {'grades.0.grade':grade},
+            {'type':first_type},
+            {'type':second_type},
             ]
         }
     )
-    return [restuarant for restuarant in restuarants]
+    return [poke for poke in pokemon]
 
-def zip_score_find(zip, score):
+def type_spawn_find(type, rate):
     '''
-    finds restaurants by zip and less than the given score and returns them in a list.
+    finds pokemon by type and less than the given spawn rate and returns them in a list.
     '''
-    zip = str(zip)
-    restuarants = collection.find(
+    pokemon = collection.find(
         {'$and':[
-            {'address.zipcode':zip},
-            {'grades.0.score':{'$lt':score}}, #nums are scores
+            {'type':type},
+            {'spawn_chance':{'$lt':rate}}, #nums are scores
             ]
         }
     )
-    return [restuarant for restuarant in restuarants]
+    return [poke for poke in pokemon]
 
-def cuisine_score_boro_find(cuisine, score, borough):
+def type_id_weakness_find(type, id, weakness):
     '''
-    finds restaurants by cuisine, and greater than the given score, and borough and returns them in a list.
+    finds pokemon by type, and greater than the id, and weakness and returns them in a list.
     '''
-    restuarants = collection.find(
+    pokemon = collection.find(
         {'$and':[
-            {'cuisine':cuisine},
-            {'grades.0.score':{'$gt':score}}, #nums are scores
-            {'borough': borough},
+            {'type':type},
+            {'id':{'$gt':id}}, #nums are scores
+            {'weaknesses': weakness},
             ]
         }
     )
-    return [restuarant for restuarant in restuarants]
+    return [poke for poke in pokemon]
 
 
 if __name__ == '__main__':
-    print('Printing borough...')
-    print(boro_find('Bronx'))
-    print('Printing zip....')
-    print(zip_find(11104))
-    print('Printing borough and zip...')
-    print(zip_grade_find(11104, 'A'))
-    print('Printing zip and score...')
-    print(zip_score_find(11104, 200))
-    print('Printing cuisine, score, and borough...')
-    print(cuisine_score_boro_find('Chinese', 40, 'Manhattan'))
+    print('Printing num...')
+    print(find_pokemon_by_num('049'))
+    print('Printing steps....')
+    print(find_pokemon_by_steps("5 km"))
+    print('Printing dual types...')
+    print(type_find('Ground', 'Rock'))
+    print('Printing type and spawn...')
+    print(type_spawn_find('Normal', 0.2))
+    print('Printing type, id, and weakness...')
+    print(type_id_weakness_find('Water', 12, 'Rock'))
