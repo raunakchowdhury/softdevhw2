@@ -44,3 +44,23 @@ $ ionic serve
     \section{owo}
 \end{document}
 ```
+## SQL Injection -- 2019-03-05
+- SQL Injection is the most common attack on web applications.
+- Successful attacks can allow people to:
+  - Corrupt data
+  - Gain admin priveleges
+  - Destroy backup files
+- Causes of SQL injection attacks:
+  - clout of business
+  - insufficient checks on user inputs (sanitization)
+- A few examples:
+  - Heartland Payment Systems -- credit card companies
+- Three types of attacks
+  - Error based - use malicious queries to force applications to throw SQL errors to learn about vulnerabilities
+  - Union based - use UNION for additional queries, which can lead to unlimited possibilities
+  - Inferential/blind - See if the application is blind to expose vulnerabilities through true/false statements
+- Measures to defend against attack:
+  - Sanitize user input first
+  - Use params rather than building the command explicitly
+  - Avoid dynamic SQL as much as possible
+  - Hide error messages from SQL injection attacks
