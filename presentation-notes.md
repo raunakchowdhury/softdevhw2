@@ -64,3 +64,75 @@ $ ionic serve
   - Use params rather than building the command explicitly
   - Avoid dynamic SQL as much as possible
   - Hide error messages from SQL injection attacks
+
+## Sass -- 2019-03-06
+- Why Sass?
+  - Css is tedious to type
+  - Allows for vars, nesting, import/extend functionalities
+- 3 standalone ways:
+  - Using standalone cmd interface w Dart-Sass
+  - using npm to integrate with JS easily, but slower
+- To compile into CSS:
+  - ` sass input.scss output.css`
+- Example Sass:
+``` scss
+$font-stack: Helvetica, sans-serif;
+$primary-color: blue;
+body{
+    font-size: $font-stack;
+    color: $primary color;
+}
+```
+- Some cool stuffs:
+``` sass
+nav{
+    ol{
+      margin: 1%
+    }
+}
+```
+  - Allows for css tags to generate automatically (the above scss will result in `nav ol` CSS being generated); see below:
+  ``` CSS
+  nav ol{
+      margin: 1%;
+  }
+  ```
+- Allows for Sass files to import each other through `#import '<filename>'` Note that file endings aren't needed.
+- Supports extending and inheritance
+  - Can declare tags but don't use it:
+  ``` sass
+    $ message-shared{
+        ...
+    }
+    .message{
+        @extend message-shared
+    }
+  ```
+  - Can define functions:
+  ``` sass
+  $function getColWidth($width, $column){
+      ...
+  }
+  ```
+  - ...and loops as well!
+
+## Haskell - 2019-03-09
+- Pure, functional, and lazy programming (**prefix language**)
+- Haskell programs can be **formerly verified**
+  - Can match papers; as a result, code is often shorter and more concise
+- Type system is from ML-based languages and is statically typed
+- Can take in functions as parameters as well as return them
+- Functions always return the same output -- "referential transparency"
+- *Pure* - functions can only do one thing
+- Exempli gratia:
+``` haskell
+sumAndSquare :: Integer -> Integer -> Integer
+```
+- Haskell will only allow for functions to do what it is needed
+- Lazy: does not evaluate a value until it is needed
+  - Allows for *infinite data sructures*
+- fib example:
+``` haskell
+fibs = 0 : 1 : zipWith (+) fibs (tail fibs)
+```
+- The `0 : 1` defines a list containing `[0,1]`
