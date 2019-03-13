@@ -1,7 +1,7 @@
 # Notes for Softdev Presentations
 
 ## Continuous Integration -- 2019-02-26
-- CI - Merge all wokring copies within the course of a day
+- CI - Merge all working copies within the course of a day
 - Unit, Functional, Integration Testing
 - Travis CI - GitHub CI Integration
   - Need a `.travis.yml` file to run the Travis file
@@ -136,3 +136,83 @@ sumAndSquare :: Integer -> Integer -> Integer
 fibs = 0 : 1 : zipWith (+) fibs (tail fibs)
 ```
 - The `0 : 1` defines a list containing `[0,1]`
+
+## Rust -- 2019-03-10
+- Rust is a fast low level programming language and aims to be a "safer" version of C
+- Has many use cases because of its fast low level capabilities and high level safety features
+``` rust
+  fn is_divisible_by(lsh: u32, rhs:u32) -> bool{
+      if rhs == 0{
+        return false;
+      }
+      lsh % rhs == 0;
+  }
+
+  fn main(){
+      println!("{}, {}, {}", is_divisible_by(2,4));
+  }
+```
+- Has another variant: unsafe Rust
+- Use the unsafe keyword and then start a new block that holds unsafe code
+``` rust
+  fn main(){
+    let a = 5;
+    unsafe{
+      *a = 4; //dereference a pointer; originally can't do this w/o unsafe
+    }
+}
+```
+
+- Pros of Rust:
+  - Ownership
+    - something about variables
+    ``` rust
+      fn main(){
+        let num = Box::new(3);
+        helper(num);
+      }
+
+      fn helper(num : Box<u32>){
+        // code here
+      }
+    ```
+    - *Personal note*: look into this
+  - Borrowing
+    - owned values can be borrowed for a certain period of time
+    - if something is being borrowed it can't be removed
+  - Mutablility
+    - Values are immutable by default, and must be declared as mutable.
+    ``` rust
+    let a = 5;
+    a = 3; // error
+    let mut a = 5;
+    a = 3; // this gud
+    ```
+  - Concurrency
+    - Rust provides a library for it to run in parallel
+    - Eliminates data races (race condtitions) at compile time (parent thread vs child thread) preventing mistakes before they occur.
+
+## NodeJS -- 2019-03-12
+- JS runtime environment built on Google's V8 JS engine
+- Allows us to run JS on the server instead of the browser
+- Used to build powerful, fast, and highly scalable apps
+- Why use it?
+  - Use JS for both backend and frontend
+  - Using NPM (Node Package Manager) gives developers many tools/modules to use
+  - Event-driven, non blocking I/O model -- can push data to many different clients in real time
+- Non-Blocking I/O
+  - Uses a single thread to handle multiple requests instead of waiting for one request to be completed before handling another request
+- npm (NodeJS package manager)
+  - Used to install node programs/modules
+  - Popular modules include:
+    - Express - Webdev Framework
+    - Pug - Template engine
+- Start a project:
+  - `$ npm init`
+  - package.json - includes package installs, names, metadata
+- To install packages from JS:
+``` js
+var module = require('module_name');
+```
+  - Installs the module from npm.
+- Run commands using node: `$ node <command>`
