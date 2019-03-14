@@ -1,3 +1,8 @@
+// Raunak Chowdhury
+// SoftDev2 pd8
+// K10 -- Ask Circles [Change || Die]
+// 2019-03-10
+
 var pic = document.getElementById('vimage');
 pic.innerHTML = '';
 var clear_button = document.getElementById('but_clear');
