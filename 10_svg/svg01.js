@@ -17,22 +17,24 @@ var createChild = (x,y) => {
   c.setAttribute("fill", "red");
   c.setAttribute("stroke", "black");
   // add change color and delete functions
-  c.addEventListener('click', function() {
-    changeColor(c);
+  c.addEventListener('click', function(e) {
+    changeColor(e, c);
   });
   return c;
   // c.addEventListener('click', killChild);
 }
 
-var changeColor = (c) => {
-  // console.log('yeet');
+var changeColor = (e, c) => {
+  // console.log(e);
   if (c.getAttribute('fill') == 'red'){
     c.setAttribute('fill', 'green');
   }
   else if (c.getAttribute('fill') == 'green'){
     var randchild = createChild(Math.random() * 500, Math.random() * 500);
     pic.appendChild(randchild);
-    perm = true;
+    c.remove();
+    e.stopPropagation()
+    // perm = true;
   }
 }
 
@@ -53,10 +55,10 @@ var pic_function = (e) => {
       // check all nodes if it's ok to add a new node
       // console.log(Math.sqrt(Math.pow(e.offsetX - children[index].getAttribute("cx"), 2) + Math.pow(e.offsetY - children[index].getAttribute("cy"), 2)))
       if (Math.sqrt(Math.pow(e.offsetX - child.getAttribute("cx"), 2) + Math.pow(e.offsetY - child.getAttribute("cy"), 2)) < 10){
-        if (child.getAttribute('fill') == 'green' && perm){
-          child.remove();
-          perm = !perm;
-        }
+        // if (child.getAttribute('fill') == 'green'){
+        //   // child.remove();
+        //   // perm = !perm;
+        // }
         return;
       }
     }
