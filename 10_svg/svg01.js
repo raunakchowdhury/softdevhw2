@@ -1,0 +1,71 @@
+var pic = document.getElementById('vimage');
+pic.innerHTML = '';
+var clear_button = document.getElementById('but_clear');
+var perm = false; // used to deal with race condition
+
+var draw = (e) => {
+  var c = createChild(e.offsetX, e.offsetY);
+  pic.appendChild(c);
+  // console.log('done!', e.offsetX, e.offsetY, pic);
+};
+
+var createChild = (x,y) => {
+  var c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+  c.setAttribute("cx", x);
+  c.setAttribute("cy", y);
+  c.setAttribute("r", 15);
+  c.setAttribute("fill", "red");
+  c.setAttribute("stroke", "black");
+  // add change color and delete functions
+  c.addEventListener('click', function() {
+    changeColor(c);
+  });
+  return c;
+  // c.addEventListener('click', killChild);
+}
+
+var changeColor = (c) => {
+  // console.log('yeet');
+  if (c.getAttribute('fill') == 'red'){
+    c.setAttribute('fill', 'green');
+  }
+  else if (c.getAttribute('fill') == 'green'){
+    var randchild = createChild(Math.random() * 500, Math.random() * 500);
+    pic.appendChild(randchild);
+    perm = true;
+  }
+}
+
+var removeChild = (c) =>{
+  console.log(c.getAttribute('fill'));
+}
+var clear = (e) => {
+  pic.innerHTML='';
+};
+
+var pic_function = (e) => {
+  var children = pic.childNodes;
+  var index;
+  var make_circle = true;
+  if (children.length != 0) {
+    for (index = 0; index < children.length; index++ ){
+      var child = children[index];
+      // check all nodes if it's ok to add a new node
+      // console.log(Math.sqrt(Math.pow(e.offsetX - children[index].getAttribute("cx"), 2) + Math.pow(e.offsetY - children[index].getAttribute("cy"), 2)))
+      if (Math.sqrt(Math.pow(e.offsetX - child.getAttribute("cx"), 2) + Math.pow(e.offsetY - child.getAttribute("cy"), 2)) < 10){
+        if (child.getAttribute('fill') == 'green' && perm){
+          child.remove();
+          perm = !perm;
+        }
+        return;
+      }
+    }
+    draw(e);
+  }
+  else{
+    draw(e);
+  }
+}
+
+pic.addEventListener('click', pic_function);
+clear_button.addEventListener('click', clear);

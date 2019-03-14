@@ -216,3 +216,17 @@ var module = require('module_name');
 ```
   - Installs the module from npm.
 - Run commands using node: `$ node <command>`
+
+## PhoneGap -- 2019-03-13
+- Mobile app dev framework
+- Used to make cross-platform mobil applications built with HTML, CSS and JS on Android and iOS
+- Uses the same code base for all users no matter what device is being used.
+- Not a native mobile app or purely web based
+- Installation:
+  - PhoneGap has two apps, one for phone and one on a website
+  - Run the app and connect your phone to the local ip addr
+- Need to install node.js first
+- Question: this vs. Ionic?
+- Very similar to have we configured our droplets (it has a `www` dir in the project)
+
+##  -- 2019-03-14
