@@ -229,4 +229,8 @@ var module = require('module_name');
 - Question: this vs. Ionic?
 - Very similar to have we configured our droplets (it has a `www` dir in the project)
 
-##  -- 2019-03-14
+## Google Pagerank Algorithm -- 2019-03-14
+- Uses link analysis algorithm like HyperSearch
+- "Link popularity" -- how many people click on the link
+- Some series to determine "page rank"
+  - More math 
