@@ -1,7 +1,6 @@
 var pic = document.getElementById('vimage');
 pic.innerHTML = '';
 var clear_button = document.getElementById('but_clear');
-var perm = false; // used to deal with race condition
 
 var draw = (e) => {
   var c = createChild(e.offsetX, e.offsetY);
@@ -33,7 +32,7 @@ var changeColor = (e, c) => {
     var randchild = createChild(Math.random() * 500, Math.random() * 500);
     pic.appendChild(randchild);
     c.remove();
-    e.stopPropagation()
+    e.stopPropagation(); //needed to prevent pic's EventListener from acting
     // perm = true;
   }
 }
@@ -55,10 +54,6 @@ var pic_function = (e) => {
       // check all nodes if it's ok to add a new node
       // console.log(Math.sqrt(Math.pow(e.offsetX - children[index].getAttribute("cx"), 2) + Math.pow(e.offsetY - children[index].getAttribute("cy"), 2)))
       if (Math.sqrt(Math.pow(e.offsetX - child.getAttribute("cx"), 2) + Math.pow(e.offsetY - child.getAttribute("cy"), 2)) < 10){
-        // if (child.getAttribute('fill') == 'green'){
-        //   // child.remove();
-        //   // perm = !perm;
-        // }
         return;
       }
     }
