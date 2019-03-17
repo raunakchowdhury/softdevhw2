@@ -1,5 +1,27 @@
-# Aim:
+# 2019-03-15
+## Event Propagation
+1. An element intercepts an event
+1. Browser collects DOM node path of the evenet from the starting element to the root.
+1. **Capture**: event propagates down the path from step 2
+1. **Bubble**: event propagates up the path from step 2
 
+
+- *default*: event listeners trigger in bubbling phase
+- To trigger during capture phase, add true as optional third arg to **addEventListener**
+``` js
+x.addEventListener('click', foo, true);
+```
+- also *default*:
+  - event propagates down
+- stop that using `e.stopPropagation()`
+- **this**
+  - has different meanings depending on the JS context from which it is being used:
+    - in a JS obj, this refers to a calling obj
+    - in an event listener, this refers to currently triggered element
+- **.target**
+  - returns element that began the event propagation chain
+
+# 2019-03-14
 ## XML (eXtensible Markup Language)
 - Used to create other languages
 - defines a set of rules for encoding data in a format which is both *human-readable* and *machine-readable*.

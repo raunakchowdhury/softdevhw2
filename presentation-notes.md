@@ -233,4 +233,55 @@ var module = require('module_name');
 - Uses link analysis algorithm like HyperSearch
 - "Link popularity" -- how many people click on the link
 - Some series to determine "page rank"
-  - More math 
+  - More math
+
+## Shell Scripting -- 2019-03-15
+- Three types of shells - Bourne Shell, C Shell (CSH), Korn Shell (KSH)
+  - Bourne Again Shell (BASH) (uses the `$` symbol)
+- Shell scripting: A script that contains a series of commands for the shell to interpret and execute
+- Why to learn: QoL, create own commands, sysadmin stuff
+- Drawbacks:
+  - Slower than C program
+  - Lots of bad scripts out there because it's so easy to write
+  - Easy to make accidental typos
+- To write a shell script ( must begin with the `#! /bin/sh` to designate it as a shell file):
+``` bash
+#! /bin/sh
+echo "hello world"
+some_var = "f"
+echo "$some_var"
+for i in marge bart homer lisa 6 7 8
+do
+    echo "$i"
+done
+editor="atom"
+while ["$editor" != "vim"]
+do
+    echo "wrong answer, try again"
+    read editor
+    echo "u typed: $editor"
+done
+```
+``` bash
+echo "good choice"
+sleep = 1
+if ["$sleep" -lt "5"]
+then
+    echo "tired"
+elif ["$sleep" -eq "4"]
+then
+    echo "yurd"
+fi # ends the if statement
+# colon (:) always evaluates to true
+while : #evals to true
+case $theme in renaissance)
+    echo "slate says yes"
+    break
+    ;;
+```
+- To run:
+```
+$ bash <script.sh>
+$ chmod a+x <script.sh>
+$ ./<script.sh>
+```
