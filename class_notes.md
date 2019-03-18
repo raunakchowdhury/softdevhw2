@@ -49,3 +49,22 @@ x.addEventListener('click', foo, true);
   <!-- <symbols defined in svg here> -->
 </svg>
 ```
+
+# 2019-03-18
+## The Basics
+- Include `http://d3js.org/d3.v5.min.js` in the script tag to use d3, or download the source and link that instead
+- Selectors
+  - Uses jquery
+  - Consisify selection of DOM elemetns
+- `d3.select(IDENTIFIER);`
+  - returns first element matching given identifier
+- `d3.selectAll(IDENTIFIER);`
+  - returns an array of all ekements matching given identifer
+- You can set various attributes: `d3.select.("body").style("color","red");`
+- ... also pass **functions** to set the values dynamically:
+```js
+d3.selectAll('p')
+  .style('font-size', function(){
+    // some num op
+  };
+```
