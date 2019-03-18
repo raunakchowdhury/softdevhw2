@@ -283,7 +283,7 @@ $ chmod a+x <script.sh>`
 $ ./<script.sh>
 ``` -->
 
-## Pandas 2019-03-18
+## Pandas -- 2019-03-18
 - Pandas - Python data analytics library
 - Series - 1 dimensional array and can hold data of any type
 - Dataframe - 2-d array
@@ -298,4 +298,3 @@ df = pd.read_csv('data.csv')
 # insert a new column
 df['gpa_4.0'] = df.gpa / 25
 ```
-- sdjn
