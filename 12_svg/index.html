@@ -61,8 +61,13 @@ SoftDev2 pd8 -- Dabbling in D3
 
   //Set width of each bar proportional to its data value.
   // is this like a foreach??
+
+  var x = d3.scaleLinear()
+      .domain([0, d3.max(data)])
+      .range([0,420]);
+
   barEnter.style("width", function(d) {
-  return d * 10 + "px"; });
+  return x(d) + "px"; });
   //Label each bar.
   barEnter.text(function(d) { return d; });
 </script>

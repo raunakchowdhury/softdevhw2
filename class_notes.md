@@ -62,9 +62,12 @@ x.addEventListener('click', foo, true);
   - returns an array of all ekements matching given identifer
 - You can set various attributes: `d3.select.("body").style("color","red");`
 - ... also pass **functions** to set the values dynamically:
-```js
+<!-- ``` js
 d3.selectAll('p')
   .style('font-size', function(){
     // some num op
   };
-```
+``` -->
+
+# 2019-03-2019
+- Enter selection: collection of placeholder nodes for each data element for which no corresponding existing DOM element was found.

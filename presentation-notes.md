@@ -298,3 +298,20 @@ df = pd.read_csv('data.csv')
 # insert a new column
 df['gpa_4.0'] = df.gpa / 25
 ```
+
+## less -- 2019-03-19
+- Less -- Leaner Style Sheets
+- Makes code quicker to write and easy to read, inspired by CSS and SASS
+- Less can be used as a nodeJS package
+- Can be downloaded as a JS file and embedded using `<script>` tags
+``` less
+// Variables
+width: @width;
+height: @height;
+// Mixins
+.centered{
+    margin: 0 auto;
+}
+```
+
+## -- 2019-03-20
