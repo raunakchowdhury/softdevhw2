@@ -314,4 +314,9 @@ height: @height;
 }
 ```
 
-## -- 2019-03-20
+## Python NumPy SciPy -- 2019-03-20
+- SciPy is a free and open source python library used for scientific computing
+- SciPy Ecosystem is the library itself
+- NumPy is a package with scientifc computations with Python
+- Arrays can be initialized in NumPy using `reshape(**kwargs)`
+  - The # of numbers you put in (2,3,5)

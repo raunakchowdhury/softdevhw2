@@ -1,3 +1,11 @@
+// important to note that all of these are Arrays and are this iterable
+var selection = d3.select('svg');
+selection.append('p');
+selection.select('p').datum(42);
+selection.select('p').data(42);
+console.log(selection.select('p'));
+
+
 var data = [4, 8, 15, 16, 23, 42];
 
 var width = 420,
