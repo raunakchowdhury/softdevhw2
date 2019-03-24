@@ -11,12 +11,12 @@ for (var index = 0; index < years.length; index++){
   data[index] = [years[index], values[index]];
 };
 
-var width = 420,
-    height = 120;
+var width = 840,
+    height = 300;
 
 var x = d3.scaleLinear()
     .domain([d3.min(years) - 1, d3.max(years) + 1])
-    .range([0, width]);
+    .range([20, width - 40]);
 
 var y = d3.scaleLinear()
     .domain([d3.min(values) - 1, d3.max(values) + 1])
@@ -30,9 +30,8 @@ var plot = chart.selectAll("g")
     .data(data)
   .enter().append("g")
     .attr("transform", function(d) {
-      return 'translate(' + x(d[0]) + ',' + y(d[1]) + ')';
+      return 'translate(' + x(d[0]) + ',' + (height - y(d[1])) + ')';
      })
-     .attr('text', function(d){return d[1];});
 
 plot.append('rect')
   .attr('width', 4)
@@ -40,11 +39,11 @@ plot.append('rect')
 
 var x_scale = d3.scaleLinear()
   .domain([d3.min(years), d3.max(years)])
-  .range([0,width-10]);
+  .range([20,width-40]);
 
 var y_scale = d3.scaleLinear()
   .domain([d3.min(values), d3.max(values)])
-  .range([0,height-10]);
+  .range([height, 0]);
 
 var x_axis = d3.axisBottom()
   .scale(x_scale); //this be a fxn
@@ -54,9 +53,30 @@ var y_axis = d3.axisLeft()
   .scale(y_scale);
 
 chart.append('g')
-  .attr('transform', 'translate(10,100)')
+  .attr('transform', 'translate(30, ' + (height - 25) +  ')')
   .call(x_axis);
 
 chart.append('g')
-  .attr('transform', 'translate(10,0)')
+  .attr('transform', 'translate(50,0)')
   .call(y_axis);
+
+// x-axis label
+chart.append('text')
+  .attr('x', width / 2)
+  .attr('y', height)
+  .text('Year');
+
+// y-axis label
+chart.append('text')
+  .attr('transform', 'rotate(-90)') //causes all coordinates to be negated
+  .attr('x', 0 - (height / 2))
+  .attr('y', 0)
+  .attr('dy', '1em')
+  .style('text-anchor', 'middle')
+  .text('NOAA - Adjusted sea level (inches)');
+
+// title
+chart.append('text')
+  .attr('x', width / 2 + 60)
+  .attr('y', 10)
+  .text('Figure 1. Global Average Sea Levels, 1993-2014')
