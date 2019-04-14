@@ -317,6 +317,37 @@ height: @height;
 ## Python NumPy SciPy -- 2019-03-20
 - SciPy is a free and open source python library used for scientific computing
 - SciPy Ecosystem is the library itself
-- NumPy is a package with scientifc computations with Python
+- NumPy is a package with scientific computations with Python
 - Arrays can be initialized in NumPy using `reshape(**kwargs)`
   - The # of numbers you put in (2,3,5)
+
+## Splay Trees -- 2019-03-25
+- Binary search tree where the searching becomes faster as you search within it
+  - If you need to look up something multiple times and it's at the bottom, a BST will find it slowly
+  - A splay tree will move the node you're looking up closer to the root for quicker access
+- Combination of 2 moves used when the searched node has a parent and a grandparent
+- "Zigs" and "Zags" -- shifts around root
+- A method called splay allows for quick insertion/deletion
+- Used in:
+  - Cool search algorithms
+  - gcc compiler
+  - Windows NT
+
+## Scala -- 2019-03-28
+- Released in 2001 and runs on JVM
+- General purpose, high-level language with strong static typing
+  - Supports both OOP and fxnal programming
+  - Lazy eval
+- Syntacticall flexible
+  - Allows for better multiline params
+- Has a unified type system
+- For expressions rather than foreach loops
+- Scala has a learning curve because of advanced features
+```scala
+object HelloWorld{
+  def main(args: Array[String]:): Unit = {
+    println("Hello World!")
+  }
+}
+```
+- Returns last statement in function without a return keyword
