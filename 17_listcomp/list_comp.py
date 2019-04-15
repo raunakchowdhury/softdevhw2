@@ -92,13 +92,16 @@ matrix = [
     [3, 5, 7],
     ]
 # loop
-transposed_matrix = []
-for index in range(len(matrix[0])):
-    new_row = []
-    for row in matrix:
-        new_row.append(row[index])
-    transposed_matrix.append(new_row)
-print('#7(loopy):', transposed_matrix)
+def transpose(matrix):
+    transposed_matrix = []
+    for index in range(len(matrix[0])):
+        new_row = []
+        for row in matrix:
+            new_row.append(row[index])
+        transposed_matrix.append(new_row)
+    return transposed_matrix
+print('#7(loopy):', transpose(matrix))
 # list_comp
-transposed_matrix = [[row[index] for row in matrix] for index in range(len(matrix[0]))]
-print('#7(listcomp):', transposed_matrix)
+def transpose_listcomp(matrix):
+    return [[row[index] for row in matrix] for index in range(len(matrix[0]))]
+print('#7(listcomp):', transpose_listcomp(matrix))
