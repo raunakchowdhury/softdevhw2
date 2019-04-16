@@ -50,8 +50,8 @@ for num in range(101):
         nums.append(num)
 print('#4(loopy):', nums)
 # listcomp
-second_nums = list({num if not is_prime(num) else None for num in range(101)})
-second_nums.remove(None)
+# NOTE: need else if the if statement comes before the "for"
+second_nums = [num for num in range(101) if not is_prime(num)]
 print('#4(list_comp):', second_nums, second_nums == nums)
 
 # loop
@@ -61,8 +61,7 @@ for num in range(101):
         nums.append(num)
 print('#5(loopy):', nums)
 # listcomp
-second_nums = list({num if is_prime(num) else None for num in range(101)})
-second_nums.remove(None)
+second_nums = [num for num in range(101) if is_prime(num)]
 print('#5(list_comp):', second_nums, nums == second_nums)
 
 # loop
@@ -82,8 +81,7 @@ def listcomp_divisors(num):
     returns list of divisors using listcomp.
     '''
     nums = []
-    nums = list({i if num % i == 0 else None for i in range(1, int(math.sqrt(num)) + 1)})
-    nums.remove(None)
+    nums = [i for i in range(1, int(math.sqrt(num)) + 1) if num % i == 0]
     return nums + [num]
 print('#6(listcomp):', listcomp_divisors(16), listcomp_divisors(16) == list_divisors(16))
 
