@@ -1,3 +1,16 @@
+# 2019-04-17
+- **Reduce**
+  - Does successive ops
+  - use:
+  ''' python
+  from functools import reduce
+  reduce(fxn,list)
+  '''
+- lambda in Python:
+  - must return a value
+  - should remind you of Scheme/Racket/LISP
+  - conditionals must be in the form of a python ternary op: `exprA if condition else exprB`
+
 # 2019-03-15
 ## Event Propagation
 1. An element intercepts an event
