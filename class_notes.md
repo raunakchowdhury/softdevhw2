@@ -1,3 +1,29 @@
+# 2019-04-28
+## Aim: JS and the Holy Trinity
+- Reduce in JS:
+``` js
+x = [1,2,3,4]
+x.reduce(function(a,b){return a+b});
+```
+- Holy trinity of data processing: filter, map, and reduce
+- Map:
+```js
+var x = [1,2,3,4];
+
+var newX = x.map(function(n){
+  return n * 2;
+});
+
+console.log('The doubled nums are', newX); //[2,4,6,8]
+```
+- filter in JS:
+``` js
+var x=[1,2,3,4];
+var newX = x.filter(function(n){ return n % 2 ==0});
+```
+- will create a list of only even elements of x
+- newX: [2,4]
+
 # 2019-04-17
 - **Reduce**
   - Does successive ops
@@ -82,5 +108,5 @@ d3.selectAll('p')
   };
 ``` -->
 
-# 2019-03-2019
+# 2019-03-19
 - Enter selection: collection of placeholder nodes for each data element for which no corresponding existing DOM element was found.
