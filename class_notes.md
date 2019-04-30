@@ -1,3 +1,22 @@
+# 2019-04-30
+- A closure remembers the context in which it was created.
+``` python
+def outer(x):
+  def contains(l):
+    return x in l
+  return contains
+
+contains_15 = outer(15)
+del outer
+outer(42) # function no longer exists
+# HOWEVER
+contains_15(range(5,20)) # this still exists!
+```
+- To create a closure:
+  - define nested fxn
+  - nested fxn must refer to var defined in enclosing fxn
+  - return nested fxn
+
 # 2019-04-28
 ## Aim: JS and the Holy Trinity
 - Reduce in JS:
