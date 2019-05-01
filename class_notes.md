@@ -1,3 +1,10 @@
+# 2019-05-01
+## Aim: Providing Closure
+- scenario: randomizing greetings in an HTML doc
+- goal: separate generation of text from HTML-ification
+- the `pythonic` way: **Apply a decorator**
+- **memoization:** process of storing previously calculated results (ie. writing `memos`) so as to avoid re-calculation
+
 # 2019-04-30
 - A closure remembers the context in which it was created.
 ``` python
